@@ -39,45 +39,39 @@ class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final random = Random();
-    final randomInt = random.nextInt(3);
 
-    // Jak dodasz const to się nie dowala edytor ;P
-    final activityColors = [
-      const Color.fromARGB(174, 31, 31, 115), //0
-      const Color.fromARGB(255, 151, 160, 54), //1
-      const Color.fromARGB(255, 255, 0, 0), //2
-      const Color.fromARGB(255, 0, 255, 0), //2
+    var activities = [
+      {
+        'name': "Trening",
+        'color': Color.fromARGB(255, 151, 160, 54),
+        'background': "assets/1.jpg"
+      },
+      {
+        'name': "moedytacja",
+        'color': Color.fromARGB(255, 255, 0, 0),
+        'background': "assets/2.jpg"
+      },
+      {
+        'name': "Joga",
+        'color': Color.fromARGB(174, 31, 31, 115),
+        'background': "assets/3.jpg"
+      },
     ];
 
-    final activityNames = [
-      "Trening",
-      "Joga",
-      "Taniec",
-      "Medytacja"
-    ];
-
-    final activityImages = [
-      "assets/1.jpg",
-      "assets/2.jpg",
-      "assets/3.jpg",
-      "assets/4.jpg"
-    ];
-
-    var ourColor = activityColors[randomInt];
-    var ourActivity = activityNames[randomInt];
-    var ourBackground = activityImages[randomInt];
+    var index = random.nextInt(activities.length);
+    var activity = activities[index];
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(ourActivity),
-          backgroundColor: ourColor,
+          title: Text(activity['name'] as String),
+          backgroundColor: activity['color'] as Color,
         ),
         body: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(ourBackground), fit: BoxFit.cover
+              image: AssetImage(activity['background'] as String), fit: BoxFit.cover
             ),
           ),
           child: Center(
