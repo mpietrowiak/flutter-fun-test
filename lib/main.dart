@@ -1,8 +1,12 @@
 import 'dart:math';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: FirstRoute(),
@@ -71,8 +75,8 @@ class SecondRoute extends StatelessWidget {
           height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(activity['background'] as String), fit: BoxFit.cover
-            ),
+                image: AssetImage(activity['background'] as String),
+                fit: BoxFit.cover),
           ),
           child: Center(
             child: ElevatedButton(
