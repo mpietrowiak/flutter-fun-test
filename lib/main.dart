@@ -12,7 +12,7 @@ void main() async {
     title: 'Navigation Basics',
     home: FirstRoute(),
   ));
-}
+} // add a widget
 
 class FirstRoute extends StatelessWidget {
   const FirstRoute({super.key});
@@ -25,7 +25,7 @@ class FirstRoute extends StatelessWidget {
         ),
         body: Center(
             child: Column(children: [
-          UserInformation(),
+          UserInformation("Parametr przekazany!"),
           ElevatedButton(
             child: const Text('Open route'),
             onPressed: () {
